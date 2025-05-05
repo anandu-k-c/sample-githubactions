@@ -34,7 +34,7 @@ jobs:
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       run: |
-        sudo -u sonarqube /opt/sonarqube/bin/linux-x86-64/sonar.sh start \
+       sonar-scanner \
           -Dsonar.projectKey=my-python-project \
           -Dsonar.sources=. \
           -Dsonar.host.url=http://localhost:9000 \
