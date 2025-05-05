@@ -12,6 +12,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
@@ -26,3 +27,14 @@ jobs:
       run: |
         cd src
         python -m pytest addition.py
+
+
+    - name: Run SonarQube scan
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      run: |
+        /opt/sonar-scanner/bin/sonar-scanner \
+          -Dsonar.projectKey=my-python-project \
+          -Dsonar.sources=. \
+          -Dsonar.host.url=http://localhost:9000 \
+          -Dsonar.login=$SONAR_TOKEN
