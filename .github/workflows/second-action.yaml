@@ -1,4 +1,4 @@
-name: My First GitHub Actions
+name: My Python CI with SonarQube
 
 on: [push]
 
@@ -12,7 +12,8 @@ jobs:
         python-version: [3.8, 3.9]
 
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v3
 
     - name: Set up Python
       uses: actions/setup-python@v2
@@ -27,17 +28,15 @@ jobs:
     - name: Run tests
       run: |
         cd src
-        python -m pytest su.py
+        python -m pytest
 
-      
-    - name: Run SonarQube scan
+    - name: Run SonarScanner
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
       run: |
-       sonar-scanner \
-          -Dsonar.projectKey=my-python-project \
-          -Dsonar.sources=. \
-          -Dsonar.host.url=${{ secrets.SONAR_HOST_URL}}\
-          -Dsonar.login=$SONAR_TOKEN
-  
+        sonar-scanner \
+          -Dsonar.login=$SONAR_TOKEN \
+          -Dsonar.host.url=$SONAR_HOST_URL \
+          -Dsonar.projectKey=my_project_key \
+          -Dsonar.sources=. \ 
