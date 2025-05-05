@@ -43,4 +43,4 @@ jobs:
             -Dsonar.host.url=$SONAR_HOST_URL \
             -Dsonar.projectKey=my_project_key \
             -Dsonar.sources=.
-            -Dsonar.python.version=${{ matrix.python-version }} \
+          
