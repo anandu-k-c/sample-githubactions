@@ -27,4 +27,18 @@ jobs:
     - name: Run tests
       run: |
         cd src
-        python -m pytest addition.py
+        python -m pytest su.py
+<<<<<<< HEAD
+=======
+      
+    - name: Run SonarQube scan
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      run: |
+        /opt/sonar-scanner/bin/sonar-scanner \
+          -Dsonar.projectKey=my-python-project \
+          -Dsonar.sources=. \
+          -Dsonar.host.url=http://localhost:9000 \
+          -Dsonar.login=$SONAR_TOKEN
+>>>>>>> 21ff8dc (update sonar scan)
+  
