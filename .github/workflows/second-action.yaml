@@ -5,6 +5,7 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
 
     strategy:
       matrix:
@@ -12,6 +13,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
@@ -25,4 +27,4 @@ jobs:
     - name: Run tests
       run: |
         cd src
-        python -m pytest su.py
+        python -m pytest addition.py
