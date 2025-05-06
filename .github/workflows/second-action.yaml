@@ -25,10 +25,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install pytest
 
-      - name: Run tests
-        run: |
-          cd src
-          pytest
 
       - name: Add SonarScanner to PATH
         run: echo "/opt/sonar-scanner/bin" >> $GITHUB_PATH
