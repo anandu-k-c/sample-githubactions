@@ -28,7 +28,7 @@ jobs:
       - name: Run tests
         run: |
           cd src
-          python -m pytest su.py
+          pytest
 
       - name: Add SonarScanner to PATH
         run: echo "/opt/sonar-scanner/bin" >> $GITHUB_PATH
@@ -43,5 +43,5 @@ jobs:
             -Dsonar.host.url=$SONAR_HOST_URL \
             -Dsonar.projectKey=python-project \
             -Dsonar.projectName=python-project \
-            -Dsonar.sources=.
+            -Dsonar.sources=src 
           
