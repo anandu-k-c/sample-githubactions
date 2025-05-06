@@ -41,6 +41,7 @@ jobs:
           sonar-scanner \
             -Dsonar.login=$SONAR_TOKEN \
             -Dsonar.host.url=$SONAR_HOST_URL \
-            -Dsonar.projectKey=my_project_key \
+            -Dsonar.projectKey=python-project \
+            -Dsonar.projectName=python-project \
             -Dsonar.sources=.
           
